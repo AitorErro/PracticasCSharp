@@ -427,6 +427,8 @@ namespace EjerciciosCSharp
             }
         }
 
+        //Punto de fusion
+
         static void Ejercicio11()
         {
             Console.WriteLine("EJERCICIO 11: ");
