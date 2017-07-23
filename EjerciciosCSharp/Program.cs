@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 
 //PROBANDO CAMBIOS CON GITHUB
@@ -32,6 +33,7 @@ namespace EjerciciosCSharp
             Console.WriteLine("10-Ejercicio 10");
             Console.WriteLine("11-Ejercicio 11");
             Console.WriteLine("12-Ejercicio 12");
+            Console.WriteLine("Introduzca 0 para salir.");
 
             //Definir la respuesta (en string), parsear a int, y por cada respuesta llamar al ejercicio en cuestión
             String respuesta = Console.ReadLine();
@@ -74,12 +76,17 @@ namespace EjerciciosCSharp
                 case 12:
                     Program.Ejercicio12();
                     break;
+                case 0:
+                    System.Environment.Exit(1);
+                    break;
                 default:
                     Console.WriteLine("No se ha encontrado el ejercicio");
                     break;
             }
 
             Console.ReadLine();
+
+            Program.Main(args);
         }
 
         static void Ejercicio1()
@@ -314,6 +321,31 @@ namespace EjerciciosCSharp
 
             try
             {
+                //definir las variables de los dos numeros (n1 y n2)
+                Console.WriteLine("Introduzca el primer numero: ");
+                int n1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Introduzca el segundo numero: ");
+                int n2 = Convert.ToInt32(Console.ReadLine());
+
+                if (n1 % n2 == 0)
+                {
+                    Console.WriteLine(n1 + " ES MULTIPLO de " + n2);
+                }
+                else if (n2 % n1 == 0)
+                {
+                    Console.WriteLine(n2 + " ES MULTIPLO de " + n1);
+                }
+                else
+                {
+                    if (n1 > n2)
+                    {
+                        Console.WriteLine( n1 + " no es múltiplo de " + n2);
+                    }
+                    else
+                    {
+                        Console.WriteLine(n2 + " no es múltiplo de " + n1);
+                    }
+                }
 
             }
             catch
@@ -328,25 +360,70 @@ namespace EjerciciosCSharp
 
             try
             {
+                //Definir tres variables (números) los cuales representaran una fecha
+                Console.WriteLine("Inserte una fecha: ");
+                Console.WriteLine("Día: (1-31)");
+                int n1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Mes: (1-12)");
+                int n2 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Año: (0-9999)");
+                int n3 = Convert.ToInt32(Console.ReadLine());
 
-            }
+                //Lógica que determina si la fecha es correcta o no, con un TRY CATCH
+                try
+                {
+                    DateTime fecha = new DateTime(n3, n2, n1);
+                    Console.WriteLine("La fecha introducida es válida: " + fecha + ".");
+                }
+                catch
+                {
+                    Console.WriteLine("La fecha introducida no es una fecha válida (" + n1 + "/" + n2 + "/" + n3 + ").");
+                }
+    }
             catch
             {
                 Console.WriteLine("Error");
             }
         }
-
+        
         static void Ejercicio10()
         {
             Console.WriteLine("EJERCICIO 10: LEER DÍA, MES Y AÑO (NÚMEROS) Y COMPROBAR SI ES FECHA CORRECTA UTILIZANDO SWITCH");
 
             try
             {
+                //Definir tres variables (números) los cuales representaran una fecha
+                Console.WriteLine("Inserte una fecha: ");
+                Console.WriteLine("Día: (1-31)");
+                int n1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Mes: (1-12)");
+                int n2 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Año: (0-9999)");
+                int n3 = Convert.ToInt32(Console.ReadLine());
 
+                //Lógica que determina si la fecha es correcta o no, con un SWITCH
+                DateTime fecha = new DateTime(n3, n2, n1);
+                bool var1 = DateTime.IsLeapYear(n3);
+                switch (var1)
+                {
+                    case true:
+                        Console.WriteLine("Año bisiesto");
+                        Console.WriteLine("Fecha introducida correcta");
+                        Console.WriteLine(fecha);
+                        break;
+                    case false:
+                        Console.WriteLine("Año no bisiesto");
+                        Console.WriteLine("Fecha introducida correcta");
+                        Console.WriteLine(fecha);
+                        break;
+                    default:
+                        Console.WriteLine("Formato incorrecto");
+                        break;
+                }
             }
             catch
             {
-                Console.WriteLine("Error");
+                Console.WriteLine("Fecha no válida");
             }
         }
 
