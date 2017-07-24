@@ -734,9 +734,9 @@ namespace EjerciciosCSharp
             try
             {
                 int Dividendo, Divisor, p = 1, q = 0;
-                Console.WriteLine("Ingresa Dividendo");
+                Console.WriteLine("Escriba el Dividendo");
                 Dividendo = Convert.ToInt16(Console.ReadLine());
-                Console.WriteLine("Ingresa Divisor");
+                Console.WriteLine("Escriba el Divisor");
                 Divisor = Convert.ToInt16(Console.ReadLine());
                 if (Dividendo >= Divisor)
                 {
@@ -760,13 +760,31 @@ namespace EjerciciosCSharp
 
         static void Ejercicio16()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 16: Leer una lista de números por teclado (hasta que se lea el 0) y " +
+                "calcular la suma y la media entera de todos ellos");
 
             try
             {
+                //Definiendo variables
+                int cont = 0;
+                int suma = 0;
+                int media = 0;
+                Console.WriteLine("Escriba un número para empezar la suma: ");
+                int n = Convert.ToInt32(Console.ReadLine());
 
+                //Lógica del ejercicio
+                while (n != 0)
+                {
+                    cont++;
+                    suma = suma + n;
 
+                    Console.WriteLine("Introduzca siguiente número (pulse 0 para salir): ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
+                media = suma / cont;
 
+                Console.WriteLine($"La SUMA de todos los números introducidos es: {suma}");
+                Console.WriteLine($"La MEDIA de todos los números introducidos es: {media}");
             }
             catch
             {
@@ -776,13 +794,44 @@ namespace EjerciciosCSharp
 
         static void Ejercicio17()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 17: ");
 
             try
             {
+                //Definiendo variables
+                int cont = 1;
+                int min = 0;
+                int max = 0;
+                Console.WriteLine("Escriba un número para empezar la lista: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                string cad = "Números introducidos: ";
+                
+                //Lógica del ejercicio
+                while (cont <= 50 && n != 0)
+                {
+                    cont++;
+                    int resta = 0;
+                    if (n > max)
+                    {
+                        max = n;
+                    }
+                    if (n < min)
+                    {
+                        min = n;
+                    }
+                    cad = cad + Convert.ToString(n) + " - ";
+                    resta = 51 - cont;
+                    Console.WriteLine("Continuar con la lista: (" + resta +" restantes) - Pulse 0 para salir");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
+                if (cont > 50)
+                {
+                    Console.WriteLine("¡¡¡Se ha superado el límite de números (50)!!!");
+                }
 
-
-
+                Console.WriteLine(cad);
+                Console.WriteLine("Número máximo: " + max);
+                Console.WriteLine("Número mínimo: " + min);
             }
             catch
             {
@@ -792,12 +841,51 @@ namespace EjerciciosCSharp
 
         static void Ejercicio18()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 18: MODIFICAR EL ALGORITMO ANTERIOR PARA QUE ADEMÁS CALCULE EL VALOR MEDIO ENTERO");
 
             try
             {
+                //Definiendo variables
+                int cont = 1;
+                int min = 0;
+                int max = 0;
+                int suma = 0;
+                int media = 0;
+                Console.WriteLine("Escriba un número para empezar la lista: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                string cad = "Números introducidos: ";
 
+                //Lógica del ejercicio
+                while (cont <= 50 && n != 0)
+                {
+                    cont++;
+                    int resta = 0;
+                    if (n > max)
+                    {
+                        max = n;
+                    }
+                    if (n < min)
+                    {
+                        min = n;
+                    }
+                    suma = suma + n;
+                    cad = cad + Convert.ToString(n) + " - ";
+                    resta = 51 - cont;
+                    Console.WriteLine("Continuar con la lista: (" + resta + " restantes) - Pulse 0 para salir");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
+                if (cont > 50)
+                {
+                    Console.WriteLine("¡¡¡Se ha superado el límite de números (50)!!!");
+                    cont = 50;
+                }
+                media = suma / cont;
 
+                Console.WriteLine(cad);
+                Console.WriteLine($"Número máximo: {max}");
+                Console.WriteLine($"Número mínimo: {min}");
+                Console.WriteLine($"La SUMA de todos los números introducidos es: {suma}");
+                Console.WriteLine($"La MEDIA de todos los números introducidos es: {media}");
 
             }
             catch
@@ -808,13 +896,26 @@ namespace EjerciciosCSharp
 
         static void Ejercicio19()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 19: Leer un número n por teclado y escribir el sumatorio de todos los números entre 1 y n.");
 
             try
             {
-
-
-
+                //Definiendo variables
+                int n = 0;
+                int suma = 0;
+                string cad = "Sumando los siguientes números: ";
+                Console.WriteLine("Introduzca un número: ");
+                n = Convert.ToInt32(Console.ReadLine());
+                while (n > 1)
+                {
+                    cad = cad + Convert.ToString(n) + "+";
+                    suma = suma + n;
+                    n--;
+                }
+                cad = cad + Convert.ToString(n);
+                suma = suma + n;
+                Console.WriteLine(cad);
+                Console.WriteLine($"La SUMA es: {suma}");
             }
             catch
             {
@@ -824,13 +925,33 @@ namespace EjerciciosCSharp
 
         static void Ejercicio20()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 20: En el tipo de secuencia a(n)=3 * a(n-1) + 2 * a(n-2), descifrar el valor de " +
+                "n cuando la secuencia es igual o mayor que 1000.");
 
             try
             {
+                //Variables
+                int a = 0;
+                int b = 1;
+                int c = 3;
+                int n = 3;
+                string cad = "0, 1, ";
+                c = (b * 3) + (a * 2);
+                cad = cad + Convert.ToString(c) + ", ";
 
+                Console.WriteLine("Pulse intro para continuar...");
+                Console.ReadLine();
 
-
+                while (c <= 1000)
+                {
+                    n++;
+                    a = b;
+                    b = c;
+                    c = (b * 3) + (a * 2);
+                    cad = cad + Convert.ToString(c) + ", ";
+                }
+                Console.WriteLine("Secuencia: " + cad);
+                Console.WriteLine("Posición para conseguir el primer resultado mayor o igual a 1000 (n): " + n);
             }
             catch
             {
