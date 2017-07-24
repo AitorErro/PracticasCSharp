@@ -398,7 +398,7 @@ namespace EjerciciosCSharp
                 int n1 = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Mes: (1-12)");
                 int n2 = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Año: (0-9999)");
+                Console.WriteLine("Año: (1-9999)");
                 int n3 = Convert.ToInt32(Console.ReadLine());
 
                 //Lógica que determina si la fecha es correcta o no, con un SWITCH
@@ -431,10 +431,59 @@ namespace EjerciciosCSharp
 
         static void Ejercicio11()
         {
-            Console.WriteLine("EJERCICIO 11: ");
+            Console.WriteLine("EJERCICIO 11: ESCRIBIR CONDICIONES CON LAS VARIABLES v1, v2 y v3");
 
             try
             {
+                //Definir las variable v1, v2 y v3 como números enteros (int)
+                Console.WriteLine("Escriba el primer valor: ");
+                int v1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Escriba el segundo valor: ");
+                int v2 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Escriba el tercer valor: ");
+                int v3 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Valores introducidos: ");
+                Console.WriteLine($"Valor 1: {v1}");
+                Console.WriteLine($"Valor 2: {v2}");
+                Console.WriteLine($"Valor 3: {v3}");
+
+                //a) Todas las variables son 0
+                if (v1 == 0 && v2 == 0 && v3 == 0)
+                {
+                    Console.WriteLine("Todas las variables son 0.");
+                }
+                //b) Todas las variables son positivas
+                if (v1 > 0 && v2 > 0 && v3 > 0)
+                {
+                    Console.WriteLine("Todas las variables son positivas.");
+                    //c) Todas las variables tienen el mismo signo
+                    Console.WriteLine("Todas las variables tienen el mismo signo (+).");
+                }
+                if (v1 < 0 && v2 < 0 && v3 < 0)
+                {
+                    Console.WriteLine("Todas las variables tienen el mismo signo (-).");
+                }
+                //d) Todos los valores son distintos
+                if (v1 != v2 && v1 != v3 && v2 != v3)
+                {
+                    Console.WriteLine("Todas los valores son distintos.");
+                }
+                //e) Dos de sus valores coinciden
+                if (v1 == v2 || v1 == v3 || v2 == v3)
+                {
+                    Console.WriteLine("Dos de sus valores coinciden.");
+                }
+                //f) Como dos de sus valores coinciden
+                if (v1 == v2 | v1 == v2 | v2 == v3)
+                {
+                    Console.WriteLine("Dos máximo de sus valores coinciden.");
+                }
+                //g) El valor de v2 está comprendido entre los de v1 y v3
+                if (v1 < v2 && v2 < v3 || v1 > v2 && v2 > v3)
+                {
+                    Console.WriteLine("El valor de v2 está comprendido entre los de v1 y v3.");
+                }
 
             }
             catch
@@ -445,11 +494,65 @@ namespace EjerciciosCSharp
 
         static void Ejercicio12()
         {
-            Console.WriteLine("EJERCICIO 12: ");
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
 
             try
             {
+                //Definir las variables mes y año
+                Console.WriteLine("Escriba el número de mes: (1-12)");
+                int mes = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Escriba el número de año: (1-9999)");
+                int anio = Convert.ToInt32(Console.ReadLine());
 
+                //Asignar un nombre en castellano al mes introducido por valor númerico, para facilitar la compresión al usuario
+                string nombreMes = "";
+                switch (mes)
+                {
+                    case 1:
+                        nombreMes = "Enero";
+                        break;
+                    case 2:
+                        nombreMes = "Febrero";
+                        break;
+                    case 3:
+                        nombreMes = "Marzo";
+                        break;
+                    case 4:
+                        nombreMes = "Abril";
+                        break;
+                    case 5:
+                        nombreMes = "Mayo";
+                        break;
+                    case 6:
+                        nombreMes = "Junio";
+                        break;
+                    case 7:
+                        nombreMes = "Julio";
+                        break;
+                    case 8:
+                        nombreMes = "Agosto";
+                        break;
+                    case 9:
+                        nombreMes = "Septiembre";
+                        break;
+                    case 10:
+                        nombreMes = "Octubre";
+                        break;
+                    case 11:
+                        nombreMes = "Noviembre";
+                        break;
+                    case 12:
+                        nombreMes = "Diciembre";
+                        break;
+                    default:
+                        Console.WriteLine("El mes introducido no es correcto.");
+                        break;
+                }
+
+                //Lógica para determinar cuantos días tiene el año guardada en la variable dias
+                int diasDelMes = DateTime.DaysInMonth(anio, mes);
+
+                Console.WriteLine($"El mes de {nombreMes} de {anio} tiene {diasDelMes} días.");
             }
             catch
             {
