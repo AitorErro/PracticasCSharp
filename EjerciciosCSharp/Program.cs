@@ -33,6 +33,23 @@ namespace EjerciciosCSharp
             Console.WriteLine("10-Ejercicio 10");
             Console.WriteLine("11-Ejercicio 11");
             Console.WriteLine("12-Ejercicio 12");
+            Console.WriteLine("13-Ejercicio 13");
+            Console.WriteLine("14-Ejercicio 14");
+            Console.WriteLine("15-Ejercicio 15");
+            Console.WriteLine("16-Ejercicio 16");
+            Console.WriteLine("17-Ejercicio 17");
+            Console.WriteLine("18-Ejercicio 18");
+            Console.WriteLine("19-Ejercicio 19");
+            Console.WriteLine("20-Ejercicio 20");
+            Console.WriteLine("21-Ejercicio 21");
+            Console.WriteLine("22-Ejercicio 22");
+            Console.WriteLine("23-Ejercicio 23");
+            Console.WriteLine("24-Ejercicio 24");
+            Console.WriteLine("25-Ejercicio 25");
+            Console.WriteLine("26-Ejercicio 26");
+            Console.WriteLine("27-Ejercicio 27");
+            Console.WriteLine("28-Ejercicio 28");
+            Console.WriteLine("29-Ejercicio 29");
             Console.WriteLine("Introduzca 0 para salir.");
 
             //Definir la respuesta (en string), parsear a int, y por cada respuesta llamar al ejercicio en cuestión
@@ -44,40 +61,91 @@ namespace EjerciciosCSharp
                     Console.WriteLine("Ejercicio vacío");
                     break;
                 case 2:
-                    Program.Ejercicio2();
+                    Ejercicio2();
                     break;
                 case 3:
-                    Program.Ejercicio3();
+                    Ejercicio3();
                     break;
                 case 4:
-                    Program.Ejercicio4();
+                    Ejercicio4();
                     break;
                 case 5:
-                    Program.Ejercicio5();
+                    Ejercicio5();
                     break;
                 case 6:
-                    Program.Ejercicio6();
+                    Ejercicio6();
                     break;
                 case 7:
-                    Program.Ejercicio7();
+                    Ejercicio7();
                     break;
                 case 8:
-                    Program.Ejercicio8();
+                    Ejercicio8();
                     break;
                 case 9:
-                    Program.Ejercicio9();
+                    Ejercicio9();
                     break;
                 case 10:
-                    Program.Ejercicio10();
+                    Ejercicio10();
                     break;
                 case 11:
-                    Program.Ejercicio11();
+                    Ejercicio11();
                     break;
                 case 12:
-                    Program.Ejercicio12();
+                    Ejercicio12();
+                    break;
+                case 13:
+                    Ejercicio13();
+                    break;
+                case 14:
+                    Ejercicio14();
+                    break;
+                case 15:
+                    Ejercicio15();
+                    break;
+                case 16:
+                    Ejercicio16();
+                    break;
+                case 17:
+                    Ejercicio17();
+                    break;
+                case 18:
+                    Ejercicio18();
+                    break;
+                case 19:
+                    Ejercicio19();
+                    break;
+                case 20:
+                    Ejercicio20();
+                    break;
+                case 21:
+                    Ejercicio21();
+                    break;
+                case 22:
+                    Ejercicio22();
+                    break;
+                case 23:
+                    Ejercicio23();
+                    break;
+                case 24:
+                    Ejercicio24();
+                    break;
+                case 25:
+                    Ejercicio25();
+                    break;
+                case 26:
+                    Ejercicio26();
+                    break;
+                case 27:
+                    Ejercicio27();
+                    break;
+                case 28:
+                    Ejercicio28();
+                    break;
+                case 29:
+                    Ejercicio29();
                     break;
                 case 0:
-                    System.Environment.Exit(1);
+                    Environment.Exit(1);
                     break;
                 default:
                     Console.WriteLine("No se ha encontrado el ejercicio");
@@ -553,6 +621,360 @@ namespace EjerciciosCSharp
                 int diasDelMes = DateTime.DaysInMonth(anio, mes);
 
                 Console.WriteLine($"El mes de {nombreMes} de {anio} tiene {diasDelMes} días.");
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio13()
+        {
+            Console.WriteLine("EJERCICIO 12: Dado un número decir si es primo");
+
+            try
+            {
+                //Definir variables
+                int a = 0, i, n;
+                Console.WriteLine("Introduzca un número: ");
+                n = Convert.ToInt32(Console.ReadLine());
+
+                for (i = 1; i < (n + 1); i++)
+                {
+                    if (n % i == 0)
+                    {
+                        a++;
+                    }
+                }
+                if (a!=2)
+                {
+                    Console.WriteLine($"{n} NO es un número Primo.");
+                }
+                else
+                {
+                    Console.WriteLine($"{n} SÍ es un número Primo.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio14()
+        {
+            Console.WriteLine("EJERCICIO 14: ESCRIBIR LOS 50 PRIMEROS NÚMEROS PRIMOS");
+
+            try
+            {
+                //Asignar variables
+                int num, i, n = 4, cont = 2;
+                string cad = "";
+                Console.WriteLine("Escriba la cantidad (X) de números primos que desea visualizar (se visualizarán los primeros X): ");
+                num = Convert.ToInt32(Console.ReadLine());
+
+                //Lógica que determina la cantidad de la variable num de los primeros números primos
+                if (num > 2)
+                {
+                    cad = "2 - 3";
+                    while (cont < num)
+                    {
+                        i = 2;
+                        while (i <= n)
+                        {
+                            if (i == n)
+                            {
+                                cad = cad + " - " + Convert.ToString(n);
+                                cont = cont + 1;
+                            }
+                            else
+                            {
+                                if (n % i == 0)
+                                {
+                                    i = n;
+                                }
+                            }
+                            i = i + 1;
+                        }
+                        n = n + 1;
+                    }
+                    Console.WriteLine(cad);
+                }
+                else
+                {
+                    if (num > 0)
+                    {
+                        if (num == 1)
+                        {
+                            Console.WriteLine("Es primo 2");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Es primo 2, 3");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Inserte números positivos");
+                    }
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio15()
+        {
+            Console.WriteLine("EJERCICIO 15: Dados dos números enteros, realizar el algoritmo que calcule el " +
+                "cociente y el resto(sin utilizar las operaciones de cociente y resto en Java, esto es, / y %)");
+
+            try
+            {
+                int Dividendo, Divisor, p = 1, q = 0;
+                Console.WriteLine("Ingresa Dividendo");
+                Dividendo = Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine("Ingresa Divisor");
+                Divisor = Convert.ToInt16(Console.ReadLine());
+                if (Dividendo >= Divisor)
+                {
+                    while ((Dividendo - Divisor) >= q)
+                    {
+                        q = Divisor * p;
+                        p++;
+                    }
+                    Console.WriteLine("El cociente es " + (p - 1) + " y el resto es " + ((Dividendo - q)));
+                }
+                else
+                {
+                    Console.WriteLine("El denominador debe ser menor");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio16()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio17()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio18()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio19()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio20()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio21()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio22()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio23()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio24()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio25()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio26()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio27()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio28()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio29()
+        {
+            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+
+            try
+            {
+
+
+
             }
             catch
             {
