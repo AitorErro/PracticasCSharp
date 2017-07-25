@@ -152,9 +152,10 @@ namespace EjerciciosCSharp
                     break;
             }
 
-            Console.ReadLine();
+            Console.WriteLine("Pulse cualquier tecla para volver al menú principal");
+            Console.ReadKey();
 
-            Program.Main(args);
+            Main(args);
         }
 
         static void Ejercicio1()
@@ -733,11 +734,14 @@ namespace EjerciciosCSharp
 
             try
             {
+                //Definiendo las variables
                 int Dividendo, Divisor, p = 1, q = 0;
                 Console.WriteLine("Escriba el Dividendo");
                 Dividendo = Convert.ToInt16(Console.ReadLine());
                 Console.WriteLine("Escriba el Divisor");
                 Divisor = Convert.ToInt16(Console.ReadLine());
+
+                //Lógica del ejercicio
                 if (Dividendo >= Divisor)
                 {
                     while ((Dividendo - Divisor) >= q)
@@ -906,6 +910,8 @@ namespace EjerciciosCSharp
                 string cad = "Sumando los siguientes números: ";
                 Console.WriteLine("Introduzca un número: ");
                 n = Convert.ToInt32(Console.ReadLine());
+
+                //Lógica del ejercicio
                 while (n > 1)
                 {
                     cad = cad + Convert.ToString(n) + "+";
@@ -942,6 +948,7 @@ namespace EjerciciosCSharp
                 Console.WriteLine("Pulse intro para continuar...");
                 Console.ReadLine();
 
+                //Lógica del ejercicio
                 while (c <= 1000)
                 {
                     n++;
@@ -961,13 +968,41 @@ namespace EjerciciosCSharp
 
         static void Ejercicio21()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 21: Leer un número y decir si es capicúa. En una primera versión supondremos " +
+                "que como máximo es un número de 6 cifras(entre 0 y 999.999)");
 
             try
             {
-
-
-
+                //Definir variables
+                bool capicua = true;
+                string cadena;
+                int i;
+                Console.WriteLine("Introduzca un número: ");
+                cadena = Console.ReadLine();
+                if (cadena.Length > 6)
+                {
+                    Console.WriteLine("El número no debe ser más grande que 6 cifras");
+                }
+                else
+                {
+                    //Lógica que deduce si es capicúa (palíndromo), o no lo es
+                    for (i = 0; i < cadena.Length / 2; i++)
+                    {
+                        if (cadena[i] != cadena[cadena.Length - 1 - i])
+                        {
+                            capicua = false;
+                        }
+                        
+                    }
+                    if (capicua == true)
+                    {
+                        Console.WriteLine($"{cadena} SÍ es capicúa.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{cadena} NO es capicúa.");
+                    }
+                }
             }
             catch
             {
@@ -977,13 +1012,35 @@ namespace EjerciciosCSharp
 
         static void Ejercicio22()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 21: Leer un número y decir si es capicúa. De cualquier cantidad de cifras");
 
             try
             {
+                //Definir variables
+                bool capicua = true;
+                string cadena;
+                int i;
+                Console.WriteLine("Introduzca un número: ");
+                cadena = Console.ReadLine();
+                
+                //Lógica que deduce si es capicúa (palíndromo), o no lo es
+                for (i = 0; i < cadena.Length / 2; i++)
+                {
+                    if (cadena[i] != cadena[cadena.Length - 1 - i])
+                    {
+                        capicua = false;
+                    }
 
-
-
+                }
+                if (capicua == true)
+                {
+                    Console.WriteLine($"{cadena} SÍ es capicúa.");
+                }
+                else
+                {
+                    Console.WriteLine($"{cadena} NO es capicúa.");
+                }
+                
             }
             catch
             {
@@ -993,13 +1050,61 @@ namespace EjerciciosCSharp
 
         static void Ejercicio23()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 23: MASTERMIND");
 
             try
             {
 
+                //Definir las variables booleanas
+                bool jugar = false;
+                bool intento = false;
 
+                Console.WriteLine("Bienvenido al MASTER MIND");
+                Console.WriteLine("Dime la combinación secreta (4 números)");
+                //Pedimos y definimos la variable que se usará como código a adivinar
+                string secret = Console.ReadLine();
+                //Comprobamos que sea de 4 dígitos, si es así, asignamos jugar = true
+                if (secret.Length < 4)
+                {
+                    Console.WriteLine("Cifras insuficientes. El número debe estar compuesto de 4 cifras");
+                }
+                else if (secret.Length > 4)
+                {
+                    Console.WriteLine("Demasiadas cifras. El número debe estar compuesto de 4 cifras");
+                }
+                else
+                {
+                    jugar = true;
+                }
 
+                //Si conseguimos que jugar = true, pasamos al siguiente paso, donde empezamoas a pedir el número
+                //que va a intentar adivinar el código secreto
+                if (jugar == true)
+                {
+                    //Definimos la variable jugada y comprobamos que tenga 4 dígitos, entonces asignamos intento = true
+                    Console.WriteLine("Dime tu jugada (4 números)");
+                    string jugada = Console.ReadLine();
+                    if (jugada.Length < 4)
+                    {
+                        Console.WriteLine("Cifras insuficientes. El número debe estar compuesto de 4 cifras");
+                    }
+                    else if (jugada.Length > 4)
+                    {
+                        Console.WriteLine("Demasiadas cifras. El número debe estar compuesto de 4 cifras");
+                    }
+                    else
+                    {
+                        intento = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                }
+                if (intento == true)
+                {
+
+                }
             }
             catch
             {
@@ -1009,7 +1114,7 @@ namespace EjerciciosCSharp
 
         static void Ejercicio24()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 24");
 
             try
             {
@@ -1025,7 +1130,7 @@ namespace EjerciciosCSharp
 
         static void Ejercicio25()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 25");
 
             try
             {
@@ -1041,7 +1146,7 @@ namespace EjerciciosCSharp
 
         static void Ejercicio26()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 26");
 
             try
             {
@@ -1057,11 +1162,24 @@ namespace EjerciciosCSharp
 
         static void Ejercicio27()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 27");
 
             try
             {
-
+                bool perfecto = false;
+                int numero = Convert.ToInt32(Console.ReadLine());
+                if (/*Lódica para que perfecto pueda ser true*/numero == 6)
+                {
+                    perfecto = true;
+                }
+                else if (numero == 5)
+                {
+                    perfecto = false;
+                }
+                else
+                {
+                    Console.WriteLine("Por favor, introduzca un número correcto.");
+                }
 
 
             }
@@ -1073,7 +1191,7 @@ namespace EjerciciosCSharp
 
         static void Ejercicio28()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 28");
 
             try
             {
@@ -1089,7 +1207,7 @@ namespace EjerciciosCSharp
 
         static void Ejercicio29()
         {
-            Console.WriteLine("EJERCICIO 12: Leer número de mes y año y decir el número de días que tiene ese mes");
+            Console.WriteLine("EJERCICIO 29");
 
             try
             {
