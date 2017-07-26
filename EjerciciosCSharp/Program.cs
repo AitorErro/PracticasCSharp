@@ -144,6 +144,15 @@ namespace EjerciciosCSharp
                 case 29:
                     Ejercicio29();
                     break;
+                case 30:
+                    Ejercicio30();
+                    break;
+                case 31:
+                    Ejercicio31();
+                    break;
+                case 32:
+                    Ejercicio32();
+                    break;
                 case 0:
                     Environment.Exit(1);
                     break;
@@ -164,7 +173,8 @@ namespace EjerciciosCSharp
 
         }
 
-        static void Ejercicio2() {
+        static void Ejercicio2()
+        {
             Console.WriteLine("EJERCICIO 2: ESCRIBIR EL NÚMERO MENOR");
 
             try
@@ -205,7 +215,7 @@ namespace EjerciciosCSharp
             Console.WriteLine("EJERCICIO 3: ESCRIBIR EL NÚMERO MAYOR");
 
             try
-            { 
+            {
                 //Definir las variables
                 Console.WriteLine("Introducir NUMERO-1: ");
                 int n1 = Convert.ToInt32(Console.ReadLine());
@@ -242,7 +252,7 @@ namespace EjerciciosCSharp
             {
                 Console.WriteLine("Valores introducidos no válidos");
             }
-            
+
         }
 
         static void Ejercicio4()
@@ -258,7 +268,7 @@ namespace EjerciciosCSharp
                 int n2 = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Introducir NUMERO-3: ");
                 int n3 = Convert.ToInt32(Console.ReadLine());
-                
+
                 //Logica que identifica los números para mostrarlos en orden decreciente
                 if (n1 > n2 && n1 > n3)
                 {
@@ -343,7 +353,7 @@ namespace EjerciciosCSharp
             Console.WriteLine("EJERCICIO 7: LEER NOTA Y ESCRIBIR EVALUACIÓN DE LA MISMA");
 
             try
-            { 
+            {
                 //definir la variable nota
                 Console.WriteLine("Introducir nota (0-10): ");
                 int nota = Convert.ToInt32(Console.ReadLine());
@@ -408,7 +418,7 @@ namespace EjerciciosCSharp
                 {
                     if (n1 > n2)
                     {
-                        Console.WriteLine( n1 + " no es múltiplo de " + n2);
+                        Console.WriteLine(n1 + " no es múltiplo de " + n2);
                     }
                     else
                     {
@@ -448,13 +458,13 @@ namespace EjerciciosCSharp
                 {
                     Console.WriteLine("La fecha introducida no es una fecha válida (" + n1 + "/" + n2 + "/" + n3 + ").");
                 }
-    }
+            }
             catch
             {
                 Console.WriteLine("Error");
             }
         }
-        
+
         static void Ejercicio10()
         {
             Console.WriteLine("EJERCICIO 10: LEER DÍA, MES Y AÑO (NÚMEROS) Y COMPROBAR SI ES FECHA CORRECTA UTILIZANDO SWITCH");
@@ -647,7 +657,7 @@ namespace EjerciciosCSharp
                         a++;
                     }
                 }
-                if (a!=2)
+                if (a != 2)
                 {
                     Console.WriteLine($"{n} NO es un número Primo.");
                 }
@@ -809,7 +819,7 @@ namespace EjerciciosCSharp
                 Console.WriteLine("Escriba un número para empezar la lista: ");
                 int n = Convert.ToInt32(Console.ReadLine());
                 string cad = "Números introducidos: ";
-                
+
                 //Lógica del ejercicio
                 while (cont <= 50 && n != 0)
                 {
@@ -825,7 +835,7 @@ namespace EjerciciosCSharp
                     }
                     cad = cad + Convert.ToString(n) + " - ";
                     resta = 51 - cont;
-                    Console.WriteLine("Continuar con la lista: (" + resta +" restantes) - Pulse 0 para salir");
+                    Console.WriteLine("Continuar con la lista: (" + resta + " restantes) - Pulse 0 para salir");
                     n = Convert.ToInt32(Console.ReadLine());
                 }
                 if (cont > 50)
@@ -992,7 +1002,7 @@ namespace EjerciciosCSharp
                         {
                             capicua = false;
                         }
-                        
+
                     }
                     if (capicua == true)
                     {
@@ -1022,7 +1032,7 @@ namespace EjerciciosCSharp
                 int i;
                 Console.WriteLine("Introduzca un número: ");
                 cadena = Console.ReadLine();
-                
+
                 //Lógica que deduce si es capicúa (palíndromo), o no lo es
                 for (i = 0; i < cadena.Length / 2; i++)
                 {
@@ -1040,7 +1050,7 @@ namespace EjerciciosCSharp
                 {
                     Console.WriteLine($"{cadena} NO es capicúa.");
                 }
-                
+
             }
             catch
             {
@@ -1056,47 +1066,27 @@ namespace EjerciciosCSharp
             {
                 //Definir las variables
                 bool jugar = false;
-                int cont = 0;
+                int cont = 1;
                 int muerto = 0;
                 int herido = 0;
 
-                //Variables para separar los números introducidos para así poder compararlas
-                char a1;
-                char b1;
-                char c1;
-                char d1;
-                char a2;
-                char b2;
-                char c2;
-                char d2;
-
-                string sec1 = "";
-                string sec2 = "";
-                string sec3 = "";
-                string sec4 = "";
-                string try1 = "";
-                string try2 = "";
-                string try3 = "";
-                string try4 = "";
+                //Inicializar las arrays (secret y jugada)
+                string secret = "";
+                string jugada = "";
+                
 
                 Console.WriteLine("Bienvenido al MASTER MIND");
                 Console.WriteLine("Dime la combinación secreta (4 números)");
                 //Pedimos y definimos la variable que se usará como código a adivinar
                 while (jugar != true)
                 {
-                    string secret = Console.ReadLine();
+                    secret = Console.ReadLine();
+                    //secret = new String[4];
                     //Comprobamos que sea de 4 dígitos, si es así, asignamos jugar = true
                     if (secret.Length == 4)
                     {
                         jugar = true;
-                        a1 = secret[1];
-                        b1 = secret[2];
-                        c1 = secret[3];
-                        d1 = secret[4];
-                        sec1 = Convert.ToString(a1);
-                        sec2 = Convert.ToString(b1);
-                        sec3 = Convert.ToString(c1);
-                        sec4 = Convert.ToString(d1);
+                        Console.Clear();
                     }
                     else
                     {
@@ -1105,7 +1095,7 @@ namespace EjerciciosCSharp
                 }
                 //Si conseguimos que jugar = true, pasamos al siguiente paso, donde empezamoas a pedir el número
                 //que va a intentar adivinar el código secreto
-                while (cont <= 8 || muerto < 4)
+                while (cont <= 8 && muerto < 4)
                 {
                     muerto = 0;
                     herido = 0;
@@ -1114,20 +1104,12 @@ namespace EjerciciosCSharp
                     while (intento != true)
                     {
                         //Definimos la variable jugada y comprobamos que tenga 4 dígitos, entonces asignamos intento = true
-                        Console.WriteLine($"Jugada Nº{cont}");
+                        Console.WriteLine($"Jugada Nº{cont - 1}");
                         Console.WriteLine("Dime tu jugada (4 números)");
-                        string jugada = Console.ReadLine();
+                        jugada = Console.ReadLine();
                         if (jugada.Length == 4)
                         {
                             intento = true;
-                            a2 = jugada[1];
-                            b2 = jugada[2];
-                            c2 = jugada[3];
-                            d2 = jugada[4];
-                            try1 = Convert.ToString(a2);
-                            try2 = Convert.ToString(b2);
-                            try3 = Convert.ToString(c2);
-                            try4 = Convert.ToString(d2);
 
                         }
                         else
@@ -1137,35 +1119,36 @@ namespace EjerciciosCSharp
                     }
                     if (intento == true)
                     {
-                        if (try1 == sec1)
+                        //Comprobamos si alguna posición o número coincide con la clave secreta para sumarlos a los MUERTOS y/o HERIDOS
+                        if (jugada.Substring(0, 1) == secret.Substring(0, 1))
                         {
                             muerto++;
                         }
-                        else if (try1 == sec2 || try1 == sec3 || try1 == sec4)
+                        else if (jugada.Substring(0, 1) == secret.Substring(1, 1) || jugada.Substring(0, 1) == secret.Substring(2, 1) || jugada.Substring(0, 1) == secret.Substring(3, 1))
                         {
                             herido++;
                         }
-                        if (try2 == sec2)
+                        if (jugada.Substring(1, 1) == secret.Substring(1, 1))
                         {
                             muerto++;
                         }
-                        else if (try2 == sec1 || try2 == sec3 || try2 == sec4)
+                        else if (jugada.Substring(1, 1) == secret.Substring(0, 1) || jugada.Substring(1, 1) == secret.Substring(2, 1) || jugada.Substring(1, 1) == secret.Substring(3, 1))
                         {
                             herido++;
                         }
-                        if (try3 == sec3)
+                        if (jugada.Substring(2, 1) == secret.Substring(2, 1))
                         {
                             muerto++;
                         }
-                        else if (try3 == sec1 || try3 == sec2 || try3 == sec4)
+                        else if (jugada.Substring(2, 1) == secret.Substring(0, 1) || jugada.Substring(2, 1) == secret.Substring(1, 1) || jugada.Substring(2, 1) == secret.Substring(3, 1))
                         {
                             herido++;
                         }
-                        if (try4 == sec4)
+                        if (jugada.Substring(3, 1) == secret.Substring(3, 1))
                         {
                             muerto++;
                         }
-                        else if (try4 == sec1 || try4 == sec2 || try4 == sec3)
+                        else if (jugada.Substring(3, 1) == secret.Substring(0, 1) || jugada.Substring(3, 1) == secret.Substring(1, 1) || jugada.Substring(3, 1) == secret.Substring(2, 1))
                         {
                             herido++;
                         }
@@ -1191,13 +1174,17 @@ namespace EjerciciosCSharp
 
         static void Ejercicio24()
         {
-            Console.WriteLine("EJERCICIO 24");
+            Console.WriteLine("EJERCICIO 24: Leer dos números n y m y escribir el número combinatorio n sobre m");
 
             try
             {
-
-
-
+                Console.WriteLine("Introduce un número (n):");
+                int n = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Introduce otro número (m):");
+                int m = Convert.ToInt32(Console.ReadLine());
+                int l = n - m;
+                int resultado = Program.Combinaorio(n) / (Program.Combinaorio(m) * Program.Combinaorio(l));
+                Console.WriteLine(resultado);
             }
             catch
             {
@@ -1207,13 +1194,45 @@ namespace EjerciciosCSharp
 
         static void Ejercicio25()
         {
-            Console.WriteLine("EJERCICIO 25");
+            Console.WriteLine("EJERCICIO 25: Leer un número n del teclado y escribir el triángulo de Tartaglia hasta la fila n-ésima");
 
             try
             {
-
-
-
+                Console.WriteLine("introduce un número:");
+                int n = Int32.Parse(Console.ReadLine());
+                int[,] triangulo = new int[n + 1, n + 1];
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = 0; j <= i; j++)
+                    {
+                        if (j == 0)
+                        {
+                            triangulo[i, j] = 1;
+                        }
+                        else if (j == i)
+                        {
+                            triangulo[i, j] = 1;
+                        }
+                        else
+                        {
+                            int num1 = i - 1;
+                            int num2 = j - 1;
+                            int n1 = triangulo[num1, num2];
+                            int n2 = triangulo[num1, j];
+                            int n3 = n1 + n2;
+                            triangulo[i, j] = n3;
+                        }
+                    }
+                }
+                for (int i = 0; i <= n; i++)
+                {
+                    string cadena = "";
+                    for (int j = 0; j <= i; j++)
+                    {
+                        cadena = cadena + "(" + i + "," + j + ") = " + triangulo[i, j] + "   ";
+                    }
+                    Console.WriteLine(cadena);
+                }
             }
             catch
             {
@@ -1223,13 +1242,79 @@ namespace EjerciciosCSharp
 
         static void Ejercicio26()
         {
-            Console.WriteLine("EJERCICIO 26");
+            Console.WriteLine("EJERCICIO 26: Realizar un programa que lea números enteros y devuelva el equivalente en números romanos");
 
             try
             {
+                //Definición de variables
+                int n = 0, millar = 0, resto = 0, centenas = 0, decenas = 0, unidades = 0;
+                string romano = "";
+                
+                Console.WriteLine("Por favor, introduzca un número (no superior a 3999): ");
+                n = Convert.ToInt32(Console.ReadLine());
 
+                //Comprobamos que el número no es mayor que 3999
+                while (n > 3999)
+                {
+                    Console.WriteLine("ATENCION, EL NÚMERO NO DEBE SER MAYOR QUE 3999");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
 
+                //Asignación de variables según valor
+                millar = n / 1000;
+                resto = n % 1000;
+                centenas = resto / 100;
+                resto = resto % 100;
+                decenas = resto / 10;
+                resto = resto % 10;
+                unidades = resto;
 
+                //Conversión a número romano
+                switch (millar)
+                {
+                    case 1: romano = romano + "M"; break;
+                    case 2: romano = romano + "MM"; break;
+                    case 3: romano = romano + "MMM"; break;
+                }
+                switch (centenas)
+                {
+                    case 1: romano = romano + "C"; break;
+                    case 2: romano = romano + "CC"; break;
+                    case 3: romano = romano + "CCC"; break;
+                    case 4: romano = romano + "CD"; break;
+                    case 5: romano = romano + "D"; break;
+                    case 6: romano = romano + "DC"; break;
+                    case 7: romano = romano + "DCC"; break;
+                    case 8: romano = romano + "DCCC"; break;
+                    case 9: romano = romano + "CM"; break;
+                }
+                switch (decenas)
+                {
+                    case 1: romano = romano + "X"; break;
+                    case 2: romano = romano + "XX"; break;
+                    case 3: romano = romano + "XXX"; break;
+                    case 4: romano = romano + "XL"; break;
+                    case 5: romano = romano + "L"; break;
+                    case 6: romano = romano + "LX"; break;
+                    case 7: romano = romano + "LXX"; break;
+                    case 8: romano = romano + "LXXX"; break;
+                    case 9: romano = romano + "XC"; break;
+                }
+                switch (unidades)
+                {
+                    case 1: romano = romano + "I"; break;
+                    case 2: romano = romano + "II"; break;
+                    case 3: romano = romano + "III"; break;
+                    case 4: romano = romano + "IV"; break;
+                    case 5: romano = romano + "V"; break;
+                    case 6: romano = romano + "VI"; break;
+                    case 7: romano = romano + "VII"; break;
+                    case 8: romano = romano + "VIII"; break;
+                    case 9: romano = romano + "IX"; break;
+                }
+
+                Console.WriteLine($"Número entero introducido: {n}");
+                Console.WriteLine($"Número en carácteres romanos: {romano}");
             }
             catch
             {
@@ -1239,26 +1324,27 @@ namespace EjerciciosCSharp
 
         static void Ejercicio27()
         {
-            Console.WriteLine("EJERCICIO 27");
+            Console.WriteLine("EJERCICIO 27: Leer un número del teclado y decir si es un número perfecto");
 
             try
             {
-                bool perfecto = false;
-                int numero = Convert.ToInt32(Console.ReadLine());
-                if (/*Lódica para que perfecto pueda ser true*/numero == 6)
+                
+                Console.WriteLine("Por favor, introduzca un número: ");
+                int numero = Convert.ToInt32(Console.ReadLine());//Definir la variable numero
+
+                //Lógica para determinar si es o no es perfecto
+                if (EsPerfecto(numero))//Si EsPerfecto (funcion definida al final del código de este archivo) es true........
                 {
-                    perfecto = true;
+                    Console.WriteLine($"El número {numero} es perfecto");
                 }
-                else if (numero == 5)
+                else if (!EsPerfecto(numero))//Si es false.......
                 {
-                    perfecto = false;
+                    Console.WriteLine($"El número {numero} NO es perfecto");
                 }
-                else
+                else//Cualquier otra posibilidad......
                 {
                     Console.WriteLine("Por favor, introduzca un número correcto.");
                 }
-
-
             }
             catch
             {
@@ -1268,13 +1354,25 @@ namespace EjerciciosCSharp
 
         static void Ejercicio28()
         {
-            Console.WriteLine("EJERCICIO 28");
+            Console.WriteLine("EJERCICIO 28: Realizar un programa que escriba todos los números perfectos entre el 1 y el 10000");
 
             try
             {
+                Console.WriteLine("Pulse cualquier tecla para visualizar todos los números perfectos entre el 1 y el 1000");
+                Console.ReadKey();
 
+                string cad = "";
+                for (int numero = 1; numero < 1000; numero++)//Definimos la variable con la que vamos a ir iterando para sacar los números perfectos y lo ponemos en el while
+                {
+                    if (EsPerfecto(numero))
+                    {
+                        cad = cad + " - " + numero;//Vamos guardando en nuestra cadena los números perfectos
+                    }
+                }
+                Console.WriteLine(cad);//Mostramos el resultado de nuestra cadena
 
-
+                Console.WriteLine();
+                Console.WriteLine("Fin del programa");
             }
             catch
             {
@@ -1288,14 +1386,160 @@ namespace EjerciciosCSharp
 
             try
             {
+                Console.WriteLine("Pulse cualquier tecla para visualizar los 4 primeros números perfectos");
+                Console.ReadKey();
 
+                int cuentaPerfecto = 0;
+                string cad = "";
+                for (int numero = 1; cuentaPerfecto < 4; numero++)
+                {
+                    if (EsPerfecto(numero))
+                    {
+                        cuentaPerfecto++;
+                        cad = cad + " - " + numero;//Vamos guardando en nuestra cadena los números perfectos
+                    }
+                }
+                Console.WriteLine($"Los 4 primeros números perfectos son{cad}");//Mostramos el resultado de nuestra cadena
 
+                Console.WriteLine();
+                Console.WriteLine("Fin del programa");
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio30()
+        {
+            Console.WriteLine("EJERCICIO 30: Ir descubriendo números perfectos, parar de descubrir cuando el usuario escriba 'NO'");
+
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Pulse cualquier tecla para empezar a encontrar números perfectos");
+                Console.ReadKey();
+                Console.WriteLine();
+
+                string cad = "Numeros perfectos encontrados: ";//Cadena para mostrar al final del porograma todos los números perfectos encontrados
+                string pregunta= "";//Variable que recoge la respuesta del usuario (si/no)
+
+                //Lógica para conseguir números perfectos. Este código se sigue ejecutando mientras (respuesta != no)
+                for (int numero = 1; pregunta != "no" ; numero++)
+                {
+                    if (EsPerfecto(numero))
+                    {
+                        cad = cad + $"{numero}, ";//Construimos la cadena
+                        Console.WriteLine($"{numero} es un número perfecto");//Mostramos el número perfecto que toca
+                        Console.WriteLine("Quieres el siguiente número perfecto? (si/no)");
+
+                        //Recogemos la respuesta del usuario y la validamos para poder tomar una decisión en la continuación del programa
+                        pregunta = Console.ReadLine();
+                        pregunta = pregunta.ToLower();
+                        while (pregunta != "si" && pregunta != "no")
+                        {
+                            Console.WriteLine("Por favor, introduzca SI o NO para continuar o finalizar (respectivamente) con el programa.");
+                            pregunta = Console.ReadLine();
+                            pregunta = pregunta.ToLower();
+                        }
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine(cad);
+                Console.WriteLine("Fin del programa");
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio31()
+        {
+            Console.WriteLine("EJERCICIO 31");
+            Console.WriteLine("TABLA ASCII COMPELTA");
+            Console.WriteLine("=====================");
+            try
+            {
+                string[] arrayAscii = new string[96]; //Definimos el array donde iran todos los valores de la tabla ascii desde 32 hasta 126
+                int indice = 0; //definimos un indice
+                for (int x = 32; x < 127; x++) //Vamos iterando para ir guardando los valores de la tabla ASCII en arrayAscii
+                {
+                    arrayAscii[indice] = Convert.ToChar(x).ToString();
+                    indice++;
+                }
+                for (int x = 0; x < 95; x++)//Recorremos arrayAscii y vamos mostrando el mensaje deseado por pantalla
+                {
+                    int num = x + 32;
+                    Console.WriteLine($"El caracter con número {num} es '{arrayAscii[x]}'");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio32()
+        {
+            Console.WriteLine("EJERCICIO 32: Medir la temperatura 3 veces al día durante 10 días");
+
+            try
+            {
+                Console.Clear();
+                //Definiendo una array bidimensional, ya que mediremos durante 10 días, la temperature 3 veces cada día
+                int[,] arrayEj23 = new int[10,3];
+                int dia = 0;
+                int temperatura = 0;
+                for (int x = 0 ; x < 10; x++)
+                {
+                    dia++;
+                    Console.WriteLine($"DÍA NUMERO {dia}");
+                    int i = 0;
+                    while (i < 3)
+                    {
+                        i++;
+                        temperatura++;
+                        Console.WriteLine($"INSERTE LA MUESTRA DE TEMPERATURA NUMERO {temperatura}: ");
+                        double muestra = Convert.ToDouble(Console.ReadLine());
+                        arrayEj23[dia, temperatura] = { dia, i};
+                    }
+                }
 
             }
             catch
             {
                 Console.WriteLine("Error");
             }
+        }
+
+        ///FUNCIONES
+        ///
+        ///a continuación se definen las funciones auxiliares para poder utilizar en los ejercicios que sean necesarios
+        ///
+
+        static int Combinaorio(int n)
+        {
+            int valor = 1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                valor = valor * i;
+            }
+
+            return valor;
+        }
+        public static bool EsPerfecto(int numero)
+        {
+            //Si la suma de los factores es igual al numero, entonces es un numero perfecto 
+            return numero == Factores(numero).Sum();
+        }
+        public static List<int> Factores(int numero)
+        {
+            List<int> factores = new List<int>();
+            for (int i = 1; i < numero; i++)//Itera por cada numero hasta el numero dado (sin incluirlo) 
+                if (numero % i == 0) factores.Add(i);//Si este es factor del mismo, entonces añade el factor 
+            return factores;
         }
     }
 }
