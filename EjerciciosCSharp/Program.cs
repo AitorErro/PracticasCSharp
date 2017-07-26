@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1054,57 +1054,134 @@ namespace EjerciciosCSharp
 
             try
             {
-
-                //Definir las variables booleanas
+                //Definir las variables
                 bool jugar = false;
-                bool intento = false;
+                int cont = 0;
+                int muerto = 0;
+                int herido = 0;
+
+                //Variables para separar los números introducidos para así poder compararlas
+                char a1;
+                char b1;
+                char c1;
+                char d1;
+                char a2;
+                char b2;
+                char c2;
+                char d2;
+
+                string sec1 = "";
+                string sec2 = "";
+                string sec3 = "";
+                string sec4 = "";
+                string try1 = "";
+                string try2 = "";
+                string try3 = "";
+                string try4 = "";
 
                 Console.WriteLine("Bienvenido al MASTER MIND");
                 Console.WriteLine("Dime la combinación secreta (4 números)");
                 //Pedimos y definimos la variable que se usará como código a adivinar
-                string secret = Console.ReadLine();
-                //Comprobamos que sea de 4 dígitos, si es así, asignamos jugar = true
-                if (secret.Length < 4)
+                while (jugar != true)
                 {
-                    Console.WriteLine("Cifras insuficientes. El número debe estar compuesto de 4 cifras");
-                }
-                else if (secret.Length > 4)
-                {
-                    Console.WriteLine("Demasiadas cifras. El número debe estar compuesto de 4 cifras");
-                }
-                else
-                {
-                    jugar = true;
-                }
-
-                //Si conseguimos que jugar = true, pasamos al siguiente paso, donde empezamoas a pedir el número
-                //que va a intentar adivinar el código secreto
-                if (jugar == true)
-                {
-                    //Definimos la variable jugada y comprobamos que tenga 4 dígitos, entonces asignamos intento = true
-                    Console.WriteLine("Dime tu jugada (4 números)");
-                    string jugada = Console.ReadLine();
-                    if (jugada.Length < 4)
+                    string secret = Console.ReadLine();
+                    //Comprobamos que sea de 4 dígitos, si es así, asignamos jugar = true
+                    if (secret.Length == 4)
                     {
-                        Console.WriteLine("Cifras insuficientes. El número debe estar compuesto de 4 cifras");
-                    }
-                    else if (jugada.Length > 4)
-                    {
-                        Console.WriteLine("Demasiadas cifras. El número debe estar compuesto de 4 cifras");
+                        jugar = true;
+                        a1 = secret[1];
+                        b1 = secret[2];
+                        c1 = secret[3];
+                        d1 = secret[4];
+                        sec1 = Convert.ToString(a1);
+                        sec2 = Convert.ToString(b1);
+                        sec3 = Convert.ToString(c1);
+                        sec4 = Convert.ToString(d1);
                     }
                     else
                     {
-                        intento = true;
+                        Console.WriteLine("El número introducido no contiene 4 dígitos, por favor, introduzca uno válido: ");
                     }
                 }
-                else
+                //Si conseguimos que jugar = true, pasamos al siguiente paso, donde empezamoas a pedir el número
+                //que va a intentar adivinar el código secreto
+                while (cont <= 8 || muerto < 4)
                 {
-                    Console.WriteLine();
-                }
-                if (intento == true)
-                {
+                    muerto = 0;
+                    herido = 0;
+                    cont++;
+                    bool intento = false;
+                    while (intento != true)
+                    {
+                        //Definimos la variable jugada y comprobamos que tenga 4 dígitos, entonces asignamos intento = true
+                        Console.WriteLine($"Jugada Nº{cont}");
+                        Console.WriteLine("Dime tu jugada (4 números)");
+                        string jugada = Console.ReadLine();
+                        if (jugada.Length == 4)
+                        {
+                            intento = true;
+                            a2 = jugada[1];
+                            b2 = jugada[2];
+                            c2 = jugada[3];
+                            d2 = jugada[4];
+                            try1 = Convert.ToString(a2);
+                            try2 = Convert.ToString(b2);
+                            try3 = Convert.ToString(c2);
+                            try4 = Convert.ToString(d2);
 
+                        }
+                        else
+                        {
+                            Console.WriteLine("El número introducido no contiene 4 dígitos, por favor, introduzca uno válido: ");
+                        }
+                    }
+                    if (intento == true)
+                    {
+                        if (try1 == sec1)
+                        {
+                            muerto++;
+                        }
+                        else if (try1 == sec2 || try1 == sec3 || try1 == sec4)
+                        {
+                            herido++;
+                        }
+                        if (try2 == sec2)
+                        {
+                            muerto++;
+                        }
+                        else if (try2 == sec1 || try2 == sec3 || try2 == sec4)
+                        {
+                            herido++;
+                        }
+                        if (try3 == sec3)
+                        {
+                            muerto++;
+                        }
+                        else if (try3 == sec1 || try3 == sec2 || try3 == sec4)
+                        {
+                            herido++;
+                        }
+                        if (try4 == sec4)
+                        {
+                            muerto++;
+                        }
+                        else if (try4 == sec1 || try4 == sec2 || try4 == sec3)
+                        {
+                            herido++;
+                        }
+                        Console.WriteLine($"MUERTOS: {muerto}");
+                        Console.WriteLine($"HERIDOS: {herido}");
+                    }
                 }
+                if (muerto == 4)
+                {
+                    Console.WriteLine("FELICIDADES, JUEGO COMPLETADO!!!");
+                }
+                else if (muerto < 4)
+                {
+                    Console.WriteLine("MALA SUERTE, INTÉNTALO DE NUEVO.");
+                }
+                Console.WriteLine("Fin del Juego, volviendo al menú principal...");
             }
             catch
             {
