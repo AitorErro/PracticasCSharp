@@ -1588,19 +1588,25 @@ namespace EjerciciosCSharp
 
             try
             {
-                Console.Clear();
+                Console.Clear();//Limpiamos la pantalla de la consola
+
+                //Definimos las variables vueltas y cuadrante, que usaremos para enviar a la función CalcularGradosl()
                 int vueltas = 0;
                 int cuadrante = 0;
                 Console.WriteLine("Introduce un número real: (mayor que 0)");
-                double grados = Convert.ToDouble(Console.ReadLine());
-                while (grados < 0)
+                double grados = Convert.ToDouble(Console.ReadLine());//Recogemos el parametro de grados
+                while (grados < 0)//Hacemos una pequeña validación para que el valor tenga que ser positivo
                 {
                     Console.WriteLine("El número introducido tiene que ser mayor que 0. Intentelo de nuevo: ");
                     grados = Convert.ToDouble(Console.ReadLine());
                 }
+
+                //Mostramos información por pantalla del parametro introducido
                 Console.WriteLine($"Grados reales: {grados}. Grados enteros: {Convert.ToInt32(grados)}. Decimales {Convert.ToDecimal(grados) - Convert.ToInt32(grados)}");
 
+                //Con la función CalcularGrados() conseguiremos los resultados deseados, los cuales se muestran por pantalla más abajo
                 grados = CalcularGrados(grados,out cuadrante,out vueltas);
+
                 Console.WriteLine($"Grados [0-360]: {grados}");
                 Console.WriteLine($"Número de vueltas: {vueltas}");
                 Console.WriteLine($"Número de cuadrante: {cuadrante}");
@@ -1618,8 +1624,9 @@ namespace EjerciciosCSharp
 
             try
             {
-                Console.Clear();
+                Console.Clear();//Limpiamos la pantalla de la consola
 
+                //Definimos todas las variables que usaremos para el ejercicio
                 int i = 0;
                 int masBajito = 0;
                 int bajito = 0;
@@ -1630,10 +1637,14 @@ namespace EjerciciosCSharp
                 Console.WriteLine("Pulse cualquier tecla para continuar...");
                 Console.ReadKey();
 
-                Random rnd = new Random();
+                Random rnd = new Random();//Creamos una variable de tipo random
+
+                //Iteramos 500 veces para conseguir 500 valores (de alumnos, teóricamente), para conseguir sus alturas, con la funcion Next de random
                 for (i=0 ; i<500 ; i++)
                 {
                     int altura = rnd.Next(150, 190);
+
+                    //Comprobamos la altura para ir guardando cada registro en nuestros parametros (contadores)
                     if (altura < 160) { masBajito++; }
                     if (altura >= 160 && altura < 170) { bajito++; }
                     if (altura >= 170 && altura < 180) { alto++; }
@@ -1642,6 +1653,7 @@ namespace EjerciciosCSharp
 
                 Console.WriteLine("Porcentajes segun su altura: ");
 
+                //Calculamos y mostramos los porcentajes
                 Console.WriteLine($"Hasta 1,60m: {Convert.ToDecimal(masBajito) / 500 * 100}%");
                 Console.WriteLine($"Entre 1,60m y 1,70m: {Convert.ToDecimal(bajito) / 500 * 100}%");
                 Console.WriteLine($"Entre 1,70m y 1,80m: {Convert.ToDecimal(alto) / 500 * 100}%");
