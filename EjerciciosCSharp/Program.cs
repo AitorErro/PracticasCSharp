@@ -50,6 +50,13 @@ namespace EjerciciosCSharp
             Console.WriteLine("27-Ejercicio 27");
             Console.WriteLine("28-Ejercicio 28");
             Console.WriteLine("29-Ejercicio 29");
+            Console.WriteLine("29-Ejercicio 30");
+            Console.WriteLine("29-Ejercicio 31");
+            Console.WriteLine("29-Ejercicio 32");
+            Console.WriteLine("29-Ejercicio 33");
+            Console.WriteLine("29-Ejercicio 34");
+            Console.WriteLine("29-Ejercicio 35");
+
             Console.WriteLine("Introduzca 0 para salir.");
 
             //Definir la respuesta (en string), parsear a int, y por cada respuesta llamar al ejercicio en cuestión
@@ -152,6 +159,15 @@ namespace EjerciciosCSharp
                     break;
                 case 32:
                     Ejercicio32();
+                    break;
+                case 33:
+                    Ejercicio33();
+                    break;
+                case 34:
+                    Ejercicio34();
+                    break;
+                case 35:
+                    Ejercicio35();
                     break;
                 case 0:
                     Environment.Exit(1);
@@ -1488,11 +1504,11 @@ namespace EjerciciosCSharp
             {
                 Console.Clear();
                 //Definiendo una array bidimensional, ya que mediremos durante 10 días, la temperature 3 veces cada día
-                int[,] arrayEj23 = new int[10,3];
+                double[,] arrayEj23 = new double[10,3];
                 int dia = 0;
-                int temperatura = 0;
                 for (int x = 0 ; x < 10; x++)
                 {
+                    int temperatura = 0;
                     dia++;
                     Console.WriteLine($"DÍA NUMERO {dia}");
                     int i = 0;
@@ -1502,9 +1518,134 @@ namespace EjerciciosCSharp
                         temperatura++;
                         Console.WriteLine($"INSERTE LA MUESTRA DE TEMPERATURA NUMERO {temperatura}: ");
                         double muestra = Convert.ToDouble(Console.ReadLine());
-                        arrayEj23[dia, temperatura] = { dia, i};
+                        arrayEj23[dia-1, temperatura-1] = muestra;
                     }
                 }
+
+                int tempNegativas = 0;
+                int cont = 0;
+                for (int cor1 = 0; cor1 < 10; cor1++)
+                {
+                    double media = 0;
+                    for (int cor2 = 0; cor2 < 3; cor2++)
+                    {
+                        media = media + arrayEj23[cor1,cor2];
+                        cont++;
+                    }
+                    media = media / cont;
+                    if (media < 0)
+                    {
+                        tempNegativas++;
+                    }
+                    Console.WriteLine($"La temperatura media del día número {cor1+1} es: {media}ºC");
+                }
+                Console.WriteLine($"La cantidad de días en los que la media ha sido inferior a 0ºC han sido: {tempNegativas}");
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio33()
+        {
+            Console.WriteLine("EJERCICIO 33: Calcular el peso en distintos planetas");
+
+            try
+            {
+                Console.Clear();//Limpiar la consola
+                string siguePor = "";//Definimos la variable que se utilizara para determinar la segunda letra (si es necesario). La variable es necesaria
+                                        //para la funcion CalcularPeso()
+                Console.WriteLine("Por favor, introduzca peso en kilos de masa: ");
+                double peso = Convert.ToDouble(Console.ReadLine());//Guardamos el peso a convertir en la variable 'peso'
+                Console.WriteLine("Dime la primera letra del astro en el que deseas conocer el peso: ");
+                Console.WriteLine("Sol Luna Saturno Mercurio Marte Urano Venus Jupiter Neptuno");
+                string empiezaPor = Console.ReadLine();//Definimos en la variable 'empiezaPor' la primera letra del astro
+                if (empiezaPor == "m")//En los casos necesarios, pedimos la siguiente letra y la guardamos en la variable 'siguePor'
+                {
+                    Console.WriteLine("Dime la segunda letra del astro: (mErcurio, mArte) ");
+                    siguePor = Console.ReadLine();
+                }
+                else if (empiezaPor == "s")
+                {
+                    Console.WriteLine("Dime la segunda letra del astro: (sOl, sAturno) ");
+                    siguePor = Console.ReadLine();
+                }
+
+                double resul = CalcularPeso(peso, empiezaPor, siguePor);//Guardamos en la variable 'resul' lo que la función CalcularPeso() nos devuelve
+                Console.WriteLine($"El peso de {peso}kg en dicho astro es de: {resul}kg");//Mostramos el resultado por pantalla
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio34()
+        {
+            Console.WriteLine("EJERCICIO 34: Introducir una cifra de grados como número real, y calcular su respectivo cuadrante");
+
+            try
+            {
+                Console.Clear();
+                int vueltas = 0;
+                int cuadrante = 0;
+                Console.WriteLine("Introduce un número real: (mayor que 0)");
+                double grados = Convert.ToDouble(Console.ReadLine());
+                while (grados < 0)
+                {
+                    Console.WriteLine("El número introducido tiene que ser mayor que 0. Intentelo de nuevo: ");
+                    grados = Convert.ToDouble(Console.ReadLine());
+                }
+                Console.WriteLine($"Grados reales: {grados}. Grados enteros: {Convert.ToInt32(grados)}. Decimales {Convert.ToDecimal(grados) - Convert.ToInt32(grados)}");
+
+                grados = CalcularGrados(grados,out cuadrante,out vueltas);
+                Console.WriteLine($"Grados [0-360]: {grados}");
+                Console.WriteLine($"Número de vueltas: {vueltas}");
+                Console.WriteLine($"Número de cuadrante: {cuadrante}");
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio35()
+        {
+            Console.WriteLine("EJERCICIO 35: Se trata de hacer una estadística de las estaturas de 500 alumnos de un colegio.");
+
+            try
+            {
+                Console.Clear();
+
+                int i = 0;
+                int masBajito = 0;
+                int bajito = 0;
+                int alto = 0;
+                int masAlto = 0;
+
+                Console.WriteLine("A continuación, el programa generará aleatoriamiente 500 estudiantes con alturas entre 1,50m y 1,90m");
+                Console.WriteLine("Pulse cualquier tecla para continuar...");
+                Console.ReadKey();
+
+                Random rnd = new Random();
+                for (i=0 ; i<500 ; i++)
+                {
+                    int altura = rnd.Next(150, 190);
+                    if (altura < 160) { masBajito++; }
+                    if (altura >= 160 && altura < 170) { bajito++; }
+                    if (altura >= 170 && altura < 180) { alto++; }
+                    if (altura >= 180) { masAlto++; }
+                }
+
+                Console.WriteLine("Porcentajes segun su altura: ");
+
+                Console.WriteLine($"Hasta 1,60m: {Convert.ToDecimal(masBajito) / 500 * 100}%");
+                Console.WriteLine($"Entre 1,60m y 1,70m: {Convert.ToDecimal(bajito) / 500 * 100}%");
+                Console.WriteLine($"Entre 1,70m y 1,80m: {Convert.ToDecimal(alto) / 500 * 100}%");
+                Console.WriteLine($"A partir de 1,90m: {Convert.ToDecimal(masAlto) / 500 * 100}%");
 
             }
             catch
@@ -1514,7 +1655,10 @@ namespace EjerciciosCSharp
         }
 
         ///FUNCIONES
-        ///
+        ///===================================================================================================================================================
+        ///===================================================================================================================================================
+        ///===================================================================================================================================================
+        ///===================================================================================================================================================
         ///a continuación se definen las funciones auxiliares para poder utilizar en los ejercicios que sean necesarios
         ///
 
@@ -1529,11 +1673,13 @@ namespace EjerciciosCSharp
 
             return valor;
         }
+
         public static bool EsPerfecto(int numero)
         {
             //Si la suma de los factores es igual al numero, entonces es un numero perfecto 
             return numero == Factores(numero).Sum();
         }
+
         public static List<int> Factores(int numero)
         {
             List<int> factores = new List<int>();
@@ -1541,5 +1687,108 @@ namespace EjerciciosCSharp
                 if (numero % i == 0) factores.Add(i);//Si este es factor del mismo, entonces añade el factor 
             return factores;
         }
+
+        /// <summary>
+        /// A continuación, se definen las constantes y la función que se encargarán del ejercicio 33
+        /// </summary>
+        const double sol = 27.94;
+        const double luna = 0.17;
+        const double saturno = 1.15;
+        const double mercurio = 0.37;
+        const double marte = 0.38;
+        const double urano = 1.17;
+        const double venus = 0.88;
+        const double jupiter = 2.64;
+        const double neptuno = 1.18;
+
+        /// <summary>
+        /// Aqui la función. Comprueba el planeta por la(s) letra(s) por la(s) que empieza, le asigna su respectiva aceleración gravitatoria y calcula el resultado
+        /// </summary>
+        public static double CalcularPeso(double peso, string empiezaPor, string siguePor)
+        {
+            empiezaPor = empiezaPor.ToLower();
+            siguePor = siguePor.ToLower();
+            double indiceMasa = 0;
+            if (empiezaPor=="s")
+            {
+                if (siguePor == "o")
+                {
+                    indiceMasa = sol;
+                }
+                if (siguePor == "a")
+                {
+                    indiceMasa = saturno;
+                }
+            }
+            if (empiezaPor == "l")
+            {
+                indiceMasa = luna;
+            }
+            if (empiezaPor == "m")
+            {
+                if (siguePor == "a")
+                {
+                    indiceMasa = marte;
+                }
+                if (siguePor == "e")
+                {
+                    indiceMasa = mercurio;
+                }
+            }
+            if (empiezaPor == "u")
+            {
+                indiceMasa = urano;
+            }
+            if (empiezaPor == "v")
+            {
+                indiceMasa = venus;
+            }
+            if (empiezaPor == "j")
+            {
+                indiceMasa = jupiter;
+            }
+            if (empiezaPor == "")
+            {
+                indiceMasa = neptuno;
+            }
+
+            return peso = peso * indiceMasa;
+        }
+
+        public static double CalcularGrados(double grados, out int cuadrante, out int vueltas)
+        {
+            cuadrante = 0;
+            vueltas = 0;
+            while (grados > 360)
+            {
+                vueltas++;
+                grados = grados - 360;
+            }
+
+            if (grados < 90)
+            {
+                cuadrante = 1;
+            }
+            if (grados >= 90 && grados < 180)
+            {
+                cuadrante = 2;
+            }
+            if (grados >= 180 && grados < 270)
+            {
+                cuadrante = 3;
+            }
+            if (grados >= 270)
+            {
+                cuadrante = 4;
+            }
+
+            return grados;
+            
+        }
+        //public static decimal RandomAltura(decimal minValue, decimal maxValue)
+        //{
+
+        //}
+
     }
 }
