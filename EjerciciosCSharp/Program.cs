@@ -56,6 +56,9 @@ namespace EjerciciosCSharp
             Console.WriteLine("29-Ejercicio 33");
             Console.WriteLine("29-Ejercicio 34");
             Console.WriteLine("29-Ejercicio 35");
+            Console.WriteLine("29-Ejercicio 36");
+            Console.WriteLine("29-Ejercicio 37");
+            Console.WriteLine("29-Ejercicio 38");
 
             Console.WriteLine("Introduzca 0 para salir.");
 
@@ -168,6 +171,15 @@ namespace EjerciciosCSharp
                     break;
                 case 35:
                     Ejercicio35();
+                    break;
+                case 36:
+                    Ejercicio36();
+                    break;
+                case 37:
+                    Ejercicio37();
+                    break;
+                case 38:
+                    Ejercicio38();
                     break;
                 case 0:
                     Environment.Exit(1);
@@ -1666,6 +1678,103 @@ namespace EjerciciosCSharp
             }
         }
 
+        static void Ejercicio36()
+        {
+            Console.WriteLine("EJERCICIO 36: Mostrar media de 50 alumnos. Los alumnos impares hacen el examen tipo A, los pares el de tipo B.");
+
+            try
+            {
+                Console.Clear();//Limpiamos la pantalla de la consola
+
+                //Definimos todas las variables que usaremos para el ejercicio
+                //Contadores
+                int contPares = 0;
+                int contImpares = 0;
+                //Variables que recogen las notas para luego hacer las medias
+                double mediaPares = 0;
+                double mediaImpares = 0;
+                //Variable que genera cada nota
+                double nota = 0;
+                //Array de todos los alumnos
+                int[] alumnos = new int[50];
+
+                //Generamos cada alumno con un número (del 1 al 50), para luego poder determinar los impares/pares
+                for (int i = 0; i < 50; i++)
+                {
+                    alumnos[i] = i + 1;
+                }
+
+                Console.WriteLine($"Número total de estudiantes = {alumnos.Count()}");//Se muestra por pantalla el número de alumnos total
+                Console.WriteLine("Pulse cualquier tecla para conocer la nota media de los examenes tipo A y tipo B");
+                Console.ReadKey();
+
+                //Se evalua si el alumno es par o impar, y se van recogiendo los valores de cada nota en las respectivas medias
+                for (int j = 0; j < 50; j++)
+                {
+                    if ((alumnos[j] % 2) == 0)
+                    {
+                        contPares++;
+                        nota = RandomNumberBetween(0, 10);
+                        mediaPares = mediaPares + nota;
+                    }
+                    else
+                    {
+                        contImpares++;
+                        nota = RandomNumberBetween(0, 10);
+                        mediaImpares = mediaImpares + nota;
+                    }
+                }
+
+                //Cálculo matemático de las medias
+                mediaPares = mediaPares / contPares;
+                mediaImpares = mediaImpares / contImpares;
+
+                //Muestra por pantalla de los resultados
+                Console.WriteLine();
+                Console.WriteLine($"Media del examen A (impares): {mediaImpares}");
+                Console.WriteLine($"Media del examen B (pares): {mediaPares}");
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio37()
+        {
+            Console.WriteLine("EJERCICIO 37");
+
+            try
+            {
+                Console.Clear();//Limpiamos la pantalla de la consola
+
+                //Definimos todas las variables que usaremos para el ejercicio
+
+
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        static void Ejercicio38()
+        {
+            Console.WriteLine("EJERCICIO 38");
+
+            try
+            {
+                Console.Clear();//Limpiamos la pantalla de la consola
+
+                //Definimos todas las variables que usaremos para el ejercicio
+                
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
         ///FUNCIONES
         ///===================================================================================================================================================
         ///===================================================================================================================================================
@@ -1797,6 +1906,16 @@ namespace EjerciciosCSharp
             return grados;
             
         }
+
+        private static readonly Random random = new Random();
+
+        private static double RandomNumberBetween(double minValue, double maxValue)
+        {
+            var next = random.NextDouble();
+
+            return minValue + (next * (maxValue - minValue));
+        }
+
         //public static decimal RandomAltura(decimal minValue, decimal maxValue)
         //{
 
