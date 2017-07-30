@@ -1742,15 +1742,48 @@ namespace EjerciciosCSharp
 
         static void Ejercicio37()
         {
-            Console.WriteLine("EJERCICIO 37");
+            Console.WriteLine("EJERCICIO 37: PROGRAMA QUE CALCULA UNA ECUACIÓN DE SEGUNDO GRADO");
 
             try
             {
                 Console.Clear();//Limpiamos la pantalla de la consola
 
                 //Definimos todas las variables que usaremos para el ejercicio
+                double x1 = 0, x2 = 0, a = 0, b = 0, c = 0;
 
+                //Le pedimos el usuario los valores de a, b y c
+                Console.WriteLine("Por favor, dime el valor de [a]");
+                double.TryParse(Console.ReadLine(), out a);
 
+                Console.WriteLine("Por favor, dime el valor de [b]");
+                double.TryParse(Console.ReadLine(), out b);
+
+                Console.WriteLine("Por favor, dime el valor de [c]");
+                double.TryParse(Console.ReadLine(), out c);
+
+                //Mostramos por pantalla la ecuación y hacemos el cálculo de las funciones
+                if (a == 0 && b == 0)
+                {
+                    Console.WriteLine($"La ecuación es:  {c} = 0;");
+                    Console.WriteLine("No hay incognitas en la ecuación.");
+                }
+                else if (a == 0 && b != 0)
+                {
+                    Console.WriteLine($"La ecuación es: {b}x + {c} = 0;");
+                    Console.WriteLine($"Ecuación de primer grado. Sol: {FuncionPrimerGrado(c,b)}");
+                }
+                else if (a != 0 && b != 0)
+                {
+                    Console.WriteLine($"La ecuación es: {a}x^2 + {b}x + {c} = 0;");
+                    Console.WriteLine($"Ecuacion de segundo grado con raices complejas.");
+                    FuncionSegundoGrado(a, b, c, out x1, out x2);
+                    Console.WriteLine($"Sol 1: {x1}");
+                    Console.WriteLine($"Sol 2: {x2}");
+                }
+                else
+                {
+                    Console.WriteLine("Parámetros incorrectos.");
+                }
             }
             catch
             {
@@ -1760,14 +1793,35 @@ namespace EjerciciosCSharp
 
         static void Ejercicio38()
         {
-            Console.WriteLine("EJERCICIO 38");
+            Console.WriteLine("EJERCICIO 38: Escribir la tabla de senos, cosenos y tangentes para todos los grados entre 0 y 360");
 
             try
             {
                 Console.Clear();//Limpiamos la pantalla de la consola
 
-                //Definimos todas las variables que usaremos para el ejercicio
-                
+                Console.WriteLine("{0,4}{1,16}{2,16}{3,16}", 
+                                "GRADOS","SENO","COSENO","TANGENTE");
+                for (int i = 0; i <= 360; i++)
+                {
+                    double sin = 0;
+                    double cos = 0;
+                    double tan = 0;
+
+                    sin = Math.Sin(i * 2.0 * Math.PI / 360.0);
+                    cos = Math.Cos(i * 2.0 * Math.PI / 360.0);
+                    tan = Math.Tan(i * 2.0 * Math.PI / 360.0);
+
+                    decimal newsin = Convert.ToDecimal(sin);
+                    decimal newcos = Convert.ToDecimal(cos);
+                    decimal newtan = Convert.ToDecimal(tan);
+
+                    newsin = decimal.Round(newsin, 7);
+                    newcos = decimal.Round(newcos, 7);
+                    newtan = decimal.Round(newtan, 7);
+
+                    Console.WriteLine("{0,4}{1,16}{2,16}{3,16}", 
+                                    i, newsin, newcos, newtan);
+                }
             }
             catch
             {
@@ -1914,6 +1968,21 @@ namespace EjerciciosCSharp
             var next = random.NextDouble();
 
             return minValue + (next * (maxValue - minValue));
+        }
+
+        public static bool FuncionSegundoGrado (double a, double b, double c, out double x1, out double x2)
+        {
+            bool realizado = true;
+            x1 = ((-b + Math.Sqrt(Math.Pow(b, 2) - 4 * a * c))) / (2 * a);
+            x2 = ((-b - Math.Sqrt(Math.Pow(b, 2) - 4 * a * c))) / (2 * a);
+            return realizado;
+        }
+
+        public static double FuncionPrimerGrado (double b, double c)
+        {
+            double x = 0;
+            x = (-1 * c) / b;
+            return x;
         }
 
         //public static decimal RandomAltura(decimal minValue, decimal maxValue)
