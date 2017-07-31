@@ -1777,8 +1777,8 @@ namespace EjerciciosCSharp
                     Console.WriteLine($"La ecuación es: {a}x^2 + {b}x + {c} = 0;");
                     Console.WriteLine($"Ecuacion de segundo grado con raices complejas.");
                     FuncionSegundoGrado(a, b, c, out x1, out x2);
-                    Console.WriteLine($"Sol 1: {x1}");
-                    Console.WriteLine($"Sol 2: {x2}");
+                    Console.WriteLine($"Sol 1: "+x1);
+                    Console.WriteLine($"Sol 2: "+x2);
                 }
                 else
                 {
@@ -1799,8 +1799,10 @@ namespace EjerciciosCSharp
             {
                 Console.Clear();//Limpiamos la pantalla de la consola
 
-                Console.WriteLine("{0,4}{1,16}{2,16}{3,16}", 
-                                "GRADOS","SENO","COSENO","TANGENTE");
+                Console.WriteLine("{0,4}\t{1,16}{2,16}{3,16}", 
+                                 "GRADOS","SENO","COSENO","TANGENTE");
+                //Console.WriteLine("GRADOS\tSENO\tCOSENO\tTANGENTE");
+
                 for (int i = 0; i <= 360; i++)
                 {
                     double sin = 0;
@@ -1821,6 +1823,7 @@ namespace EjerciciosCSharp
 
                     Console.WriteLine("{0,4}{1,16}{2,16}{3,16}", 
                                     i, newsin, newcos, newtan);
+                    //Console.WriteLine(i+"\t"+newsin + "\t" + newcos + "\t" + newtan);
                 }
             }
             catch
